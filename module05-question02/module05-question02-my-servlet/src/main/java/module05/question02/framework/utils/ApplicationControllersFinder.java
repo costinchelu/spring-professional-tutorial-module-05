@@ -28,7 +28,7 @@ public class ApplicationControllersFinder {
             return controller.getConstructor().newInstance();
         } catch (Exception e) {
             throw new RuntimeException(
-                    String.format("Error occured while creating instance of controller %s: %s", controller.getSimpleName(), e.getMessage()), e
+                    String.format("Error occurred while creating instance of controller %s: %s", controller.getSimpleName(), e.getMessage()), e
             );
         }
     }

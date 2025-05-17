@@ -13,6 +13,7 @@ import static java.lang.String.valueOf;
 
 @ControllerMapping("/add-numbers")
 public class AddNumbersController implements IController {
+
     @Override
     public ModelAndView handleRequest(HttpServletRequest req) {
         Model model = new SimpleModel();
