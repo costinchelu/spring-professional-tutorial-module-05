@@ -19,10 +19,13 @@ public class IndexController {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
+
     @Autowired
     private RequestScopeBean requestScopeBean;
+
     @Autowired
     private SessionScopeBean sessionScopeBean;
+
     @Autowired
     private ApplicationScopeBean applicationScopeBean;
 
