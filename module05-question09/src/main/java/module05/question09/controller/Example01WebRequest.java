@@ -7,9 +7,12 @@ import org.springframework.web.context.request.WebRequest;
 
 import static module05.question09.utils.JoinUtils.join;
 
+/**
+ * curl "localhost:8080/actionA?name=John&country=US"
+ */
 @Controller
 public class Example01WebRequest {
-    // curl "localhost:8080/actionA?name=John&country=US"
+
     @GetMapping("/actionA")
     @ResponseBody
     public String actionA(WebRequest webRequest) {

@@ -8,10 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-// InputStream and OutputStream Example
+/**
+ * InputStream and OutputStream Example
+ * <br/><br/>
+ * curl -X POST -H "Content-Type: application/octet-stream" -d "{ request body content }" localhost:8080/actionK
+ */
 @Controller
 public class Example11Streams {
-    // curl -X POST -H "Content-Type: application/octet-stream" -d "{ request body content }" localhost:8080/actionK
+
     @RequestMapping("/actionK")
     @ResponseBody
     public void actionK(InputStream inputStream, OutputStream outputStream) throws IOException {

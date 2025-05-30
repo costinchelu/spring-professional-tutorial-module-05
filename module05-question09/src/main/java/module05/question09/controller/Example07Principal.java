@@ -8,10 +8,14 @@ import java.security.Principal;
 
 import static java.lang.String.format;
 
+/**
+ * <a href="http://localhost:8080/actionG">GET /actionG </a>
+ * <br/><br/>
+ * use john/john or mary/mary as username and password
+ */
 @Controller
 public class Example07Principal {
-    // Visit http://localhost:8080/actionG in your browser
-    // use john/john or mary/mary as username and password
+
     @GetMapping("/actionG")
     @ResponseBody
     public String actionG(Principal principal) {

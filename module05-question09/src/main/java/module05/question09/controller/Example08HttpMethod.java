@@ -7,11 +7,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import static java.lang.String.format;
 
+/**
+ * curl -X GET localhost:8080/actionH
+ * <br/><br/>
+ * curl -X POST localhost:8080/actionH
+ * <br/><br/>
+ * curl -X PUT localhost:8080/actionH
+ */
 @Controller
 public class Example08HttpMethod {
-    // curl -X GET localhost:8080/actionH
-    // curl -X POST localhost:8080/actionH
-    // curl -X PUT localhost:8080/actionH
+
     @RequestMapping("/actionH")
     @ResponseBody
     public String actionH(HttpMethod httpMethod) {

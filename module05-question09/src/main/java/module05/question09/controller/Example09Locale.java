@@ -8,11 +8,16 @@ import java.util.Locale;
 
 import static java.lang.String.format;
 
+/**
+ * curl -H "Accept-Language: en" localhost:8080/actionI
+ * <br/><br/>
+ * curl -H "Accept-Language: es" localhost:8080/actionI
+ * <br/><br/>
+ * curl -H "Accept-Language: pl" localhost:8080/actionI
+ */
 @Controller
 public class Example09Locale {
-    // curl -H "Accept-Language: en" localhost:8080/actionI
-    // curl -H "Accept-Language: es" localhost:8080/actionI
-    // curl -H "Accept-Language: pl" localhost:8080/actionI
+
     @RequestMapping("/actionI")
     @ResponseBody
     public String actionI(Locale locale) {

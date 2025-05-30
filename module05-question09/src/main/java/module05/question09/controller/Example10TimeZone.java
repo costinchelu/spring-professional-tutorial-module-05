@@ -9,10 +9,15 @@ import java.util.TimeZone;
 
 import static java.lang.String.format;
 
-// TimeZone and ZoneId Example
+
+/**
+ * TimeZone and ZoneId Example
+ * <br/><br/>
+ * curl localhost:8080/actionJ
+ */
 @Controller
 public class Example10TimeZone {
-    // curl localhost:8080/actionJ
+
     @RequestMapping("/actionJ")
     @ResponseBody
     public String actionJ(TimeZone timeZone, ZoneId zoneId) {

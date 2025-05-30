@@ -10,14 +10,21 @@ import java.io.IOException;
 
 import static java.lang.String.format;
 
+/**
+ * curl localhost:8080/actionD
+ */
 @Controller
 public class Example04ServletRequestAndResponse {
-    // curl localhost:8080/actionD
+
     @GetMapping("/actionD")
     @ResponseBody
     public void actionD(ServletRequest servletRequest, ServletResponse servletResponse) throws IOException {
-        servletResponse.getOutputStream().println(
-                format("Retrieved request on server = [%s:%d]", servletRequest.getServerName(), servletRequest.getServerPort())
+        servletResponse.getOutputStream()
+                .println(
+                format("Retrieved request on server = [%s:%d]",
+                        servletRequest.getServerName(),
+                        servletRequest.getServerPort()
+                )
         );
     }
 }

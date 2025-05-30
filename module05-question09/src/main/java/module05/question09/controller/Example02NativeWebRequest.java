@@ -12,9 +12,12 @@ import java.io.IOException;
 import static module05.question09.utils.JoinUtils.join;
 import static java.lang.String.format;
 
+/**
+ * curl "localhost:8080/actionB?name=John&country=US"
+ */
 @Controller
 public class Example02NativeWebRequest {
-    // curl "localhost:8080/actionB?name=John&country=US"
+
     @GetMapping("/actionB")
     @ResponseBody
     public void actionB(NativeWebRequest nativeWebRequest) throws IOException {

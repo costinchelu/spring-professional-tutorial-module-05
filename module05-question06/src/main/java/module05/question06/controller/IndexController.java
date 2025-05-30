@@ -36,7 +36,7 @@ public class IndexController {
 
     // curl -X GET localhost:8080/actionD
     // curl -X POST localhost:8080/actionD
-    @RequestMapping(path = "/actionD", method = {GET, POST})
+    @RequestMapping(method = {GET, POST}, path = "/actionD")
     @ResponseBody
     public String actionD() {
         return "Handled with @RequestMapping(path = \"/actionD\", method = {GET, POST})\n";

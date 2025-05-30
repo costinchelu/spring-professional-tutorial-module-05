@@ -6,9 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * curl "http://localhost:8080/actionS?firstName=John&lastName=Doe"
+ * <br/><br/>
+ * <a href="http://localhost:8080/actionS/simpleForm">GET /actionS/simpleForm</a>
+ *
+ */
 @Controller
 public class Example18AnyType {
-    // curl "http://localhost:8080/actionS?firstName=John&lastName=Doe"
+
     @GetMapping("/actionS")
     @ResponseBody
     public String actionS(String firstName, String lastName) {
@@ -18,7 +24,6 @@ public class Example18AnyType {
         );
     }
 
-    // Visit http://localhost:8080/actionS/simpleForm in your browser
     @GetMapping("/actionS/simpleForm")
     public String actionSSimpleForm(Person person) {
         return "person-form-simple";

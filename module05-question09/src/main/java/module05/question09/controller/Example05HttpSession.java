@@ -8,9 +8,12 @@ import javax.servlet.http.HttpSession;
 
 import static java.lang.String.format;
 
+/**
+ * curl -c cookie.txt -b cookie.txt localhost:8080/actionE
+ */
 @Controller
 public class Example05HttpSession {
-    // curl -c cookie.txt -b cookie.txt localhost:8080/actionE
+
     @GetMapping("/actionE")
     @ResponseBody
     public String actionE(HttpSession httpSession) {

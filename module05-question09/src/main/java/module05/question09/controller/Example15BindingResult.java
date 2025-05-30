@@ -10,15 +10,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
+/**
+ * <a href="http://localhost:8080/actionO1">GET /actionO1</a>
+ */
 @Controller
 public class Example15BindingResult {
-    // Visit http://localhost:8080/actionO1 in your browser
+
     @GetMapping("/actionO1")
     public String actionO1(@ModelAttribute Address address) {
         return "address-form";
     }
 
-    // This endpoint will be used by actionO1 to submit data that contains address:
+    // This endpoint will be used by actionO1 to submit data that contains the address:
     // John	Doe
     // 455 Larkspur Dr. Apt 23
     // Baviera	CA	92908	United States

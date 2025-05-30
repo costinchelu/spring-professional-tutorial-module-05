@@ -17,7 +17,11 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
 
-// SessionStatus + class-level @SessionAttributes with multi step form processing
+/**
+ * SessionStatus + class-level @SessionAttributes with multi step form processing
+ * <br/><br/>
+ * <a href="http://localhost:8080/actionP">GET /actionP</a>
+ */
 @Controller
 @SessionAttributes({"person", "shortAddress", "country"})
 public class Example16SessionAttributes {
@@ -25,11 +29,9 @@ public class Example16SessionAttributes {
     @Autowired
     private AddressDao addressDao;
 
-    // Visit http://localhost:8080/actionP in your browser
     @GetMapping("/actionP")
     public String actionP(Model model) {
         model.addAttribute("addresses", addressDao.findAll());
-
         return "addresses-list";
     }
 
@@ -71,7 +73,12 @@ public class Example16SessionAttributes {
 
     // This is a post submission method for third step of multi step address submission
     @PostMapping("/actionP/address/step3")
-    public String actionPStep2(@ModelAttribute("country") @Valid Country country, BindingResult bindingResult, @ModelAttribute("shortAddress") ShortAddress shortAddress, @ModelAttribute("person") Person person, SessionStatus sessionStatus) {
+    public String actionPStep2(
+            @ModelAttribute("country") @Valid Country country,
+            BindingResult bindingResult,
+            @ModelAttribute("shortAddress") ShortAddress shortAddress,
+            @ModelAttribute("person") Person person,
+            SessionStatus sessionStatus) {
         if (bindingResult.hasErrors())
             return "address-form-step3";
         else {

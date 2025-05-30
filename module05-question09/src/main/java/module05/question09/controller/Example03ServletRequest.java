@@ -8,9 +8,12 @@ import javax.servlet.ServletRequest;
 
 import static java.lang.String.format;
 
+/**
+ * curl localhost:8080/actionC
+ */
 @Controller
 public class Example03ServletRequest {
-    // curl localhost:8080/actionC
+
     @GetMapping("/actionC")
     @ResponseBody
     public String actionC(ServletRequest servletRequest) {

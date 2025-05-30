@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * <a href="http://localhost:8080/actionN1">GET /actionN1</a>
+ * <br/><br/>
+ * Action /actionN1 will redirect request to /actionN2
+ */
 @Controller
 public class Example14RedirectAttributes {
-    // Visit http://localhost:8080/actionN1 in your browser
+
     @GetMapping("/actionN1")
     public String actionN1(RedirectAttributes redirectAttributes) {
         redirectAttributes.addAttribute("firstName", "John");
@@ -19,9 +24,12 @@ public class Example14RedirectAttributes {
         return "redirect:/actionN2";
     }
 
-    // Action /actionN1 will redirect request to this /actionN2
     @GetMapping("/actionN2")
-    public String actionN2(@RequestParam("firstName") String firstName, @ModelAttribute("lastName") String lastName, @ModelAttribute("city") String city, Model model) {
+    public String actionN2(
+            @RequestParam("firstName") String firstName,
+            @ModelAttribute("lastName") String lastName,
+            @ModelAttribute("city") String city,
+            Model model) {
         model.addAttribute("firstName", firstName);
         // lastName and city are already in model, they do not have to be added
 
