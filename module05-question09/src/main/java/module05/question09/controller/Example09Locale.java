@@ -13,7 +13,7 @@ import static java.lang.String.format;
  * <br/><br/>
  * curl -H "Accept-Language: es" localhost:8080/actionI
  * <br/><br/>
- * curl -H "Accept-Language: pl" localhost:8080/actionI
+ * curl -H "Accept-Language: ro" localhost:8080/actionI
  */
 @Controller
 public class Example09Locale {

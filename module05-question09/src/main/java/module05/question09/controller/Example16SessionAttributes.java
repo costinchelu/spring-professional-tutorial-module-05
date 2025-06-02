@@ -73,7 +73,7 @@ public class Example16SessionAttributes {
 
     // This is a post submission method for third step of multi step address submission
     @PostMapping("/actionP/address/step3")
-    public String actionPStep2(
+    public String actionPStep3(
             @ModelAttribute("country") @Valid Country country,
             BindingResult bindingResult,
             @ModelAttribute("shortAddress") ShortAddress shortAddress,
@@ -84,6 +84,7 @@ public class Example16SessionAttributes {
         else {
             Address address = new Address(person, shortAddress, country);
             addressDao.save(address);
+
             sessionStatus.setComplete();
 
             return "redirect:/actionP";

@@ -18,6 +18,9 @@ public class Example06PushBuilder {
         return "images";
     }
 
+    /**
+     * uses HTTP2 to preload resources (faster loading - load resources eagerly) - only works with https
+     */
     @GetMapping("/actionF/with-push")
     public String actionFWithPush(PushBuilder pushBuilder) {
         if (pushBuilder != null) {

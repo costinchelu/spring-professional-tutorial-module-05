@@ -17,7 +17,10 @@ public class Example14RedirectAttributes {
 
     @GetMapping("/actionN1")
     public String actionN1(RedirectAttributes redirectAttributes) {
+        // will be sent as a query parameter
         redirectAttributes.addAttribute("firstName", "John");
+
+        // will be sent in a model (session attribute) - valid for redirects
         redirectAttributes.addFlashAttribute("lastName", "Doe");
         redirectAttributes.addFlashAttribute("city", "Los Angeles");
 
@@ -31,7 +34,7 @@ public class Example14RedirectAttributes {
             @ModelAttribute("city") String city,
             Model model) {
         model.addAttribute("firstName", firstName);
-        // lastName and city are already in model, they do not have to be added
+        // lastName and city are already in model (from the redirectAttributes), they do not have to be added
 
         return "list-attributes";
     }

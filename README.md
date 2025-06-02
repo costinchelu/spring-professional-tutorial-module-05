@@ -16,9 +16,9 @@
 |                 |                                                                           |
 | 04.08           | What is the differences between @RequestParam and @PathVariable?          |
 |                 |                                                                           |
-| 04.09           |                                                                           |
+| 04.09           | What are some of the parameter types for a controller method?             |
 |                 |                                                                           |
-| 04.10           |                                                                           |
+| 04.10           | What other annotations might you use on a controller method parameter?    |
 |                 |                                                                           |
 | 04.11           | What are some of the valid return types of a controller method?           |
 

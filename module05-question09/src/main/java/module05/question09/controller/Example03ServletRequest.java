@@ -17,6 +17,8 @@ public class Example03ServletRequest {
     @GetMapping("/actionC")
     @ResponseBody
     public String actionC(ServletRequest servletRequest) {
-        return format("Retrieved request on server = [%s:%d]\n", servletRequest.getServerName(), servletRequest.getServerPort());
+        return format("Retrieved request on server = [%s:%d]\n",
+                servletRequest.getServerName(),
+                servletRequest.getServerPort());
     }
 }

@@ -10,6 +10,8 @@ import static java.lang.String.format;
 
 /**
  * curl -c cookie.txt -b cookie.txt localhost:8080/actionE
+ * <br/><br/>
+ * -c option, creates a cookie with a JSESSIONID and -b option sends the cookie data with the requests so we can identify the session
  */
 @Controller
 public class Example05HttpSession {
