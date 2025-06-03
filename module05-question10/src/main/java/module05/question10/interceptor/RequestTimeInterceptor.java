@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Component
 public class RequestTimeInterceptor implements HandlerInterceptor {
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         request.setAttribute("processing-time", LocalDateTime.now());

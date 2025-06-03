@@ -9,7 +9,8 @@ import java.util.Set;
 
 @Component
 public class InMemoryStorage {
-    private Map<String, Byte[]> contentByName = new HashMap<>();
+
+    private final Map<String, Byte[]> contentByName = new HashMap<>();
 
     public void store(String name, byte[] content) {
         contentByName.put(name, ArrayUtils.toObject(content));

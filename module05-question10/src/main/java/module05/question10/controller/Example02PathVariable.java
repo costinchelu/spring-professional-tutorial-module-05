@@ -7,18 +7,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Optional;
 
+/**
+ * curl http://localhost:8080/example02A/firstName/John/lastName/Doe
+ * <br/><br/>
+ * curl http://localhost:8080/example02B/firstName/John/lastName/Doe
+ * <br/><br/>
+ * curl http://localhost:8080/example02B/firstName/John
+ * <br/><br/>
+ * curl http://localhost:8080/example02C/firstName/John/lastName/Doe
+ * <br/><br/>
+ * curl http://localhost:8080/example02C/firstName/John
+ */
 @Controller
 public class Example02PathVariable {
 
-    // curl http://localhost:8080/example02A/firstName/John/lastName/Doe
     @GetMapping("/example02A/firstName/{firstName}/lastName/{lastName}")
     @ResponseBody
     public String example02A(@PathVariable("firstName") String firstName, @PathVariable("lastName") String lastName) {
         return String.format("Received firstName = [%s], lastName = [%s]\n", firstName, lastName);
     }
 
-    // curl http://localhost:8080/example02B/firstName/John/lastName/Doe
-    // curl http://localhost:8080/example02B/firstName/John
     @GetMapping({
             "/example02B/firstName/{firstName}/lastName/{lastName}",
             "/example02B/firstName/{firstName}"
@@ -28,8 +36,6 @@ public class Example02PathVariable {
         return String.format("Received firstName = [%s], lastName = [%s]\n", firstName, lastName);
     }
 
-    // curl http://localhost:8080/example02C/firstName/John/lastName/Doe
-    // curl http://localhost:8080/example02C/firstName/John
     @GetMapping({
             "/example02C/firstName/{firstName}/lastName/{lastName}",
             "/example02C/firstName/{firstName}"

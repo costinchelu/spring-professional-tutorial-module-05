@@ -15,10 +15,28 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07A
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07B
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07B
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07C
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07C
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07D
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John1", "lastName": "Doe" };type=application/json' http://localhost:8080/example07D
+ * <br/><br/>
+ * curl -F 'person={ "firstName": "John1", "lastName": "Doe2" };type=application/json' http://localhost:8080/example07D
+ * <br/><br/>
+ * <a href="http://localhost:8080/example07E/gallery">GET http://localhost:8080/example07E/gallery</a>
+ */
 @Controller
 public class Example07RequestPart {
 
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07A
     @PostMapping("/example07A")
     @ResponseBody
     public String example07A(@RequestPart("person") String person, @RequestPart("country") String country) {
@@ -28,8 +46,6 @@ public class Example07RequestPart {
         );
     }
 
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07B
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07B
     @PostMapping("/example07B")
     @ResponseBody
     public String example07B(@RequestPart("person") Person person, @RequestPart(value = "country", required = false) Country country) {
@@ -39,8 +55,6 @@ public class Example07RequestPart {
         );
     }
 
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' -F 'country={ "country": "United States" };type=application/json' http://localhost:8080/example07C
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07C
     @PostMapping("/example07C")
     @ResponseBody
     public String example07C(@RequestPart("person") Person person, @RequestPart("country") Optional<Country> country) {
@@ -50,9 +64,6 @@ public class Example07RequestPart {
         );
     }
 
-    // curl -F 'person={ "firstName": "John", "lastName": "Doe" };type=application/json' http://localhost:8080/example07D
-    // curl -F 'person={ "firstName": "John1", "lastName": "Doe" };type=application/json' http://localhost:8080/example07D
-    // curl -F 'person={ "firstName": "John1", "lastName": "Doe2" };type=application/json' http://localhost:8080/example07D
     @PostMapping("/example07D")
     @ResponseBody
     public String example07D(@RequestPart("person") @Valid Person person, BindingResult bindingResult) {
@@ -62,15 +73,12 @@ public class Example07RequestPart {
         );
     }
 
-    // Visit http://localhost:8080/example07E/gallery
     @GetMapping("/example07E/gallery")
     public String example07E(Model model) {
         model.addAttribute("imageNames", inMemoryStorage.getNames());
-
         return "gallery";
     }
 
-    // Visit http://localhost:8080/example07E/gallery
     @GetMapping(value = "/example07E/gallery/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] example07E(@PathVariable String imageName) {

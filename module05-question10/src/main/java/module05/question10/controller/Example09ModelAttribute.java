@@ -9,18 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+/**
+ * <a href="http://localhost:8080/example09">GET /example09</a>
+ * <br/><br/>
+ * John	Doe <br/>
+ * 455 Larkspur Dr. Apt 23 <br/>
+ * Baviera	CA	92908	United States
+ */
 @Controller
 public class Example09ModelAttribute {
 
-    // Visit http://localhost:8080/example09
+    // Visit http://loclhost:8080/example09
     @GetMapping("/example09")
     public String example09(@ModelAttribute Address address) {
         return "address-form";
     }
 
-    // John	Doe
-    // 455 Larkspur Dr. Apt 23
-    // Baviera	CA	92908	United States
     @PostMapping("/example09")
     public String example09(@ModelAttribute @Valid Address address, BindingResult bindingResult) {
         if (bindingResult.hasErrors())

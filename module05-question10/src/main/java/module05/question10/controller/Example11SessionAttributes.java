@@ -17,6 +17,13 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import javax.validation.Valid;
 
+/**
+ * <a href="http://localhost:8080/example11">GET /example11</a>
+ * <br/><br/>
+ * John	Doe <br/>
+ * 455 Larkspur Dr. Apt 23 <br/>
+ * Baviera	CA	92908	United States
+ */
 @Controller
 @SessionAttributes({"person", "shortAddress", "country"})
 public class Example11SessionAttributes {
@@ -24,14 +31,9 @@ public class Example11SessionAttributes {
     @Autowired
     private AddressDao addressDao;
 
-    // Visit http://localhost:8080/example11 in your browser
-    // John	Doe
-    // 455 Larkspur Dr. Apt 23
-    // Baviera	CA	92908	United States
     @GetMapping("/example11")
     public String example11(Model model) {
         model.addAttribute("addresses", addressDao.findAll());
-
         return "addresses-list";
     }
 
@@ -73,7 +75,12 @@ public class Example11SessionAttributes {
 
     // This is a post submission method for third step of multi step address submission
     @PostMapping("/example11/address/step3")
-    public String example11Step3(@ModelAttribute("country") @Valid Country country, BindingResult bindingResult, @ModelAttribute("shortAddress") ShortAddress shortAddress, @ModelAttribute("person") Person person, SessionStatus sessionStatus) {
+    public String example11Step3(
+            @ModelAttribute("country") @Valid Country country,
+            @ModelAttribute("shortAddress") ShortAddress shortAddress,
+            @ModelAttribute("person") Person person,
+            BindingResult bindingResult,
+            SessionStatus sessionStatus) {
         if (bindingResult.hasErrors())
             return "address-form-step3";
         else {
