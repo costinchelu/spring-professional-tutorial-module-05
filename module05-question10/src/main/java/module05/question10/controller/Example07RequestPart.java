@@ -37,6 +37,9 @@ import java.util.Optional;
 @Controller
 public class Example07RequestPart {
 
+    @Autowired
+    private InMemoryStorage inMemoryStorage;
+
     @PostMapping("/example07A")
     @ResponseBody
     public String example07A(@RequestPart("person") String person, @RequestPart("country") String country) {
@@ -79,6 +82,7 @@ public class Example07RequestPart {
         return "gallery";
     }
 
+    // this will be called from FE (images-list.html) - for each element of the "imageNames" in the GET "/example07E/gallery"
     @GetMapping(value = "/example07E/gallery/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
     @ResponseBody
     public byte[] example07E(@PathVariable String imageName) {
@@ -88,10 +92,6 @@ public class Example07RequestPart {
     @PostMapping("/example07E/gallery")
     public String example07EUpload(@RequestPart("file") MultipartFile file) throws IOException {
         inMemoryStorage.store(file.getOriginalFilename(), file.getBytes());
-
         return "redirect:/example07E/gallery";
     }
-
-    @Autowired
-    private InMemoryStorage inMemoryStorage;
 }

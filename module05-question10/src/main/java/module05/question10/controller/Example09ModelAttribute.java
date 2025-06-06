@@ -19,7 +19,6 @@ import javax.validation.Valid;
 @Controller
 public class Example09ModelAttribute {
 
-    // Visit http://loclhost:8080/example09
     @GetMapping("/example09")
     public String example09(@ModelAttribute Address address) {
         return "address-form";

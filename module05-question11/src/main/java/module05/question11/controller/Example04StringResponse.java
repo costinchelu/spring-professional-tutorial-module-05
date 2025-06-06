@@ -10,16 +10,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
+/**
+ * <a href="http://localhost:8080/example04A">GET /example04A</a>
+ * <br/><br/>
+ * <a href="http://localhost:8080/example04B">GET /example04B</a>
+ */
 @Controller
 public class Example04StringResponse {
 
-    // Visit http://localhost:8080/example04A
     @GetMapping("/example04A")
     public String example04A() {
         return "hello";
     }
 
-    // Visit http://localhost:8080/example04B
     @GetMapping("/example04B")
     public String example04B(@ModelAttribute Person person) {
         return "person";
@@ -28,7 +31,6 @@ public class Example04StringResponse {
     @PostMapping("/example04B")
     public String example04BSubmit(@ModelAttribute @Valid Person person, BindingResult bindingResult, Model model) {
         model.addAttribute("submit", true);
-
         return "person";
     }
 }

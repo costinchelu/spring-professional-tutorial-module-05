@@ -13,16 +13,20 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.concurrent.CompletableFuture;
 
-import static module05.question11.utils.SleepUtil.sleep;
+import static module05.question11.utils.Utils.sleep;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
+/**
+ * curl -D - http://localhost:8080/example13A
+ * <br/><br/>
+ * curl -D - http://localhost:8080/example13B
+ */
 @Controller
 public class Example13Emitter {
 
     @Autowired
     private TaskExecutor taskExecutor;
 
-    // curl -D - http://localhost:8080/example13A
     @GetMapping("/example13A")
     @ResponseBody
     public ResponseBodyEmitter example13A() {
@@ -42,7 +46,6 @@ public class Example13Emitter {
         return emitter;
     }
 
-    // curl -D - http://localhost:8080/example13B
     @GetMapping("/example13B")
     @ResponseBody
     public SseEmitter example13B() {

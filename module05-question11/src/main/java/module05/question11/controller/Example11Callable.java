@@ -9,23 +9,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.concurrent.Callable;
 
-import static module05.question11.utils.SleepUtil.SLEEP_TIME_SECONDS;
-import static module05.question11.utils.SleepUtil.sleep;
+import static module05.question11.utils.Utils.SLEEP_TIME_SECONDS;
+import static module05.question11.utils.Utils.log;
+import static module05.question11.utils.Utils.sleep;
 
+/**
+ * curl http://localhost:8080/example11A
+ */
 @Controller
 public class Example11Callable {
 
-    private Logger logger = LoggerFactory.getLogger(Example11Callable.class);
+    private final Logger logger = LoggerFactory.getLogger(Example11Callable.class);
 
-    // curl http://localhost:8080/example11A
     @GetMapping("/example11A")
     @ResponseBody
     public Callable<Person> example11A() {
         return () -> {
-            logger.info(String.format("Pretending to run long operation for %d seconds in thread %s", SLEEP_TIME_SECONDS, Thread.currentThread().getName()));
-            sleep();
-            logger.info("Pretended long operation finished, returning value...");
-
+            log(logger, Thread.currentThread().getName());
             return new Person("John", "Doe");
         };
     }

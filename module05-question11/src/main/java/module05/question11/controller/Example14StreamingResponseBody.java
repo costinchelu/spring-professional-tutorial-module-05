@@ -7,10 +7,12 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 import java.io.IOException;
 import java.io.OutputStream;
 
+/**
+ * curl http://localhost:8080/example14
+ */
 @Controller
 public class Example14StreamingResponseBody {
 
-    // curl http://localhost:8080/example14
     @GetMapping("/example14")
     public StreamingResponseBody example14() {
         return new StreamingResponseBody() {

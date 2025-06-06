@@ -10,10 +10,14 @@ import java.util.Map;
 
 import static java.util.Arrays.asList;
 
+/**
+ * <a href="http://localhost:8080/example08A">GET /example08A</a>
+ * <br/><br/>
+ * <a href="http://localhost:8080/example08B">GET /example08B</a>
+ */
 @Controller
 public class Example08ModelAndView {
 
-    // Visit http://localhost:8080/example08A
     @GetMapping("/example08A")
     public ModelAndView example08A() {
         return new ModelAndView(
@@ -23,7 +27,6 @@ public class Example08ModelAndView {
         );
     }
 
-    // Visit http://localhost:8080/example08B
     @GetMapping("/example08B")
     public ModelAndView example08B() {
         return new ModelAndView(

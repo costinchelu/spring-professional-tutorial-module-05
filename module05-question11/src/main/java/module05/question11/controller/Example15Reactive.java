@@ -9,15 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import static module05.question11.utils.SleepUtil.sleep;
+import static module05.question11.utils.Utils.sleep;
 
+/**
+ * curl -D - http://localhost:8080/example15
+ */
 @Controller
 public class Example15Reactive {
 
     @Autowired
     private TaskExecutor taskExecutor;
 
-    // curl -D - http://localhost:8080/example15
     @GetMapping("/example15")
     @ResponseBody
     public Observable<Person> example15() {

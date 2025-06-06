@@ -15,32 +15,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 
-import static module05.question11.utils.SleepUtil.SLEEP_TIME_SECONDS;
-import static module05.question11.utils.SleepUtil.sleep;
+import static module05.question11.utils.Utils.SLEEP_TIME_SECONDS;
+import static module05.question11.utils.Utils.log;
+import static module05.question11.utils.Utils.sleep;
 
+/**
+ * curl http://localhost:8080/example12A
+ * <br/><br/>
+ * curl http://localhost:8080/example12B
+ * <br/><br/>
+ * curl http://localhost:8080/example12C
+ */
 @Controller
 public class Example12Future {
 
     @Autowired
     private TaskExecutor taskExecutor;
-    private Logger logger = LoggerFactory.getLogger(Example12Future.class);
 
-    // curl http://localhost:8080/example12A
+    private final Logger logger = LoggerFactory.getLogger(Example12Future.class);
+
     @GetMapping("/example12A")
     @ResponseBody
     public ListenableFuture<Person> example12A() {
         ListenableFutureTask<Person> listenableFutureTask = new ListenableFutureTask<>(() -> {
-            logger.info(String.format("Pretending to run long operation for %d seconds in thread %s", SLEEP_TIME_SECONDS, Thread.currentThread().getName()));
-            sleep();
-            logger.info("Pretended long operation finished, returning value...");
-
+            log(logger, Thread.currentThread().getName());
             return new Person("John", "Doe");
         });
 
         listenableFutureTask.addCallback(new ListenableFutureCallback<>() {
             @Override
             public void onSuccess(Person person) {
-                logger.info(String.format("Task created person = [%s]", person));
+                logger.info("Task created person = [{}]", person);
             }
 
             @Override
@@ -54,15 +59,11 @@ public class Example12Future {
         return listenableFutureTask;
     }
 
-    // curl http://localhost:8080/example12B
     @GetMapping("/example12B")
     @ResponseBody
     public CompletableFuture<Integer> example12B() {
         CompletableFuture<Person> completableFuture = CompletableFuture.supplyAsync(() -> {
-            logger.info(String.format("Pretending to run long operation for %d seconds in thread %s", SLEEP_TIME_SECONDS, Thread.currentThread().getName()));
-            sleep();
-            logger.info("Pretended long operation finished, returning value...");
-
+            log(logger, Thread.currentThread().getName());
             return new Person("John", "Doe");
         });
 
@@ -71,15 +72,11 @@ public class Example12Future {
                 .thenApply(String::length);
     }
 
-    // curl http://localhost:8080/example12C
     @GetMapping("/example12C")
     @ResponseBody
     public CompletionStage<String> example12C() {
         CompletionStage<Person> completionStage = CompletableFuture.supplyAsync(() -> {
-            logger.info(String.format("Pretending to run long operation for %d seconds in thread %s", SLEEP_TIME_SECONDS, Thread.currentThread().getName()));
-            sleep();
-            logger.info("Pretended long operation finished, returning value...");
-
+            log(logger, Thread.currentThread().getName());
             return new Person("John", "Doe");
         });
 
@@ -87,4 +84,6 @@ public class Example12Future {
                 .thenApply(person -> String.format("%s %s", person.getFirstName(), person.getLastName()))
                 .thenApply(String::toUpperCase);
     }
+
+
 }

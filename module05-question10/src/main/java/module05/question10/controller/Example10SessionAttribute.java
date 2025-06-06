@@ -18,6 +18,7 @@ import java.util.Optional;
 @Controller
 public class Example10SessionAttribute {
 
+    // mutableCountHolder is created in the interceptor
     @GetMapping("/example10A")
     @ResponseBody
     public String example10A(@SessionAttribute MutableCountHolder mutableCountHolder) {
@@ -27,13 +28,13 @@ public class Example10SessionAttribute {
 
     @GetMapping("/example10B")
     @ResponseBody
-    public String example10B(@SessionAttribute(required = false, name = "current-count") Integer count) {
+    public String example10B(@SessionAttribute(required = false, name = "non-existent-counter") Integer count) {
         return String.format("count value = [%d]\n", count);
     }
 
     @GetMapping("/example10C")
     @ResponseBody
-    public String example10C(@SessionAttribute("current-count") Optional<Integer> count) {
+    public String example10C(@SessionAttribute("non-existent-counter") Optional<Integer> count) {
         return String.format("count value = [%d]\n", count.orElse(-1));
     }
 }

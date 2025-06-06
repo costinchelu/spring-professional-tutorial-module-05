@@ -9,10 +9,14 @@ import java.util.Map;
 
 import static java.util.Arrays.asList;
 
+/**
+ * <a href="http://localhost:8080/example06A">GET /example06A</a>
+ * <br/><br/>
+ * <a href="http://localhost:8080/example06B">GET /example06B</a>
+ */
 @Controller
 public class Example06Model {
 
-    // Visit http://localhost:8080/example06A
     @GetMapping("/example06A")
     public Model example06A() {
         Model model = new BindingAwareModelMap();
@@ -21,7 +25,6 @@ public class Example06Model {
         return model;
     }
 
-    // Visit http://localhost:8080/example06B
     @GetMapping("/example06B")
     public Map example06B() {
         return Map.of(

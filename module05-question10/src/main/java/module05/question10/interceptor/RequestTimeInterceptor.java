@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 
+// this will set a new attribute by intercepting each request, and we can get this attribute in /example08A or /example08B endpoints
 @Component
 public class RequestTimeInterceptor implements HandlerInterceptor {
 

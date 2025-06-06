@@ -5,10 +5,12 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+/**
+ * curl -D - http://localhost:8080/example03
+ */
 @Controller
 public class Example03HttpHeaders {
 
-    // curl -D - http://localhost:8080/example03
     @GetMapping("/example03")
     public HttpHeaders example03() {
         HttpHeaders httpHeaders = new HttpHeaders();
