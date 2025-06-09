@@ -18,24 +18,24 @@ public class Example02Entity {
 
     @GetMapping("/example02A")
     public HttpEntity<Person> example02A() {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Person-Version", "v2");
-
         return new HttpEntity<>(
                 new Person("John", "Doe"),
-                httpHeaders
+                getCustomHeaders()
         );
     }
 
     @GetMapping("/example02B")
     public ResponseEntity<Person> example02B() {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.set("Person-Version", "v2");
-
         return new ResponseEntity<>(
                 new Person("John", "Doe"),
-                httpHeaders,
+                getCustomHeaders(),
                 HttpStatus.FOUND
         );
+    }
+
+    private HttpHeaders getCustomHeaders() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Person-Version", "v2");
+        return httpHeaders;
     }
 }

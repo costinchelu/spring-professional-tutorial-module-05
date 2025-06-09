@@ -50,7 +50,7 @@ public class Example12Future {
 
             @Override
             public void onFailure(Throwable ex) {
-                logger.info(String.format("Exception thrown by task = [%s]", ex.getMessage()));
+                logger.info("Exception thrown by task = [{}]", ex.getMessage());
             }
         });
 

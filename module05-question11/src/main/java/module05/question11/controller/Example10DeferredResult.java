@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.async.DeferredResult;
 
 import static module05.question11.utils.Utils.SLEEP_TIME_SECONDS;
+import static module05.question11.utils.Utils.log;
 import static module05.question11.utils.Utils.sleep;
 
 /**
@@ -30,9 +31,7 @@ public class Example10DeferredResult {
         DeferredResult<Person> deferredResult = new DeferredResult<>();
 
         taskExecutor.execute(() -> {
-            logger.info("Sleeping for {} seconds before giving back results...", SLEEP_TIME_SECONDS);
-            sleep();
-            logger.info("Finished sleeping, giving back results...");
+            log(logger, Thread.currentThread().getName());
             deferredResult.setResult(new Person("John", "Doe"));
         });
 
